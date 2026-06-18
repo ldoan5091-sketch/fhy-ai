@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌈 FHY AI HYPER PLATFORM v16.4 🌈</title>
+    <title>🌈 FHY AI DEEP NEURAL PLATFORM v17.0 🌈</title>
     
-    <!-- 🌐 LOGO TRÊN TAB TRÌNH DUYỆT ĐỘC QUYỀN CHO CEO -->
+    <!-- LOGO TRÊN TAB TRÌNH DUYỆT ĐỘC QUYỀN CHO CEO -->
     <link rel="icon" type="image/png" href="https://imgbox.com">
     
     <style>
@@ -23,60 +23,63 @@
             50% { box-shadow: 0 0 35px #ff0055; transform: scale(1.04); border-color: #ff0055; }
             100% { box-shadow: 0 0 15px #00f2fe; transform: scale(1); border-color: #00f2fe; }
         }
-        body {
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(-45deg, #0d0b21, #240a34, #050b14, #111827, #ff0055, #00f2fe);
             background-size: 600% 600%;
             animation: gradientBG 10s ease infinite;
-            margin: 0;
-            padding: 40px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .fhy-wrapper {
+
+        .login-wrapper {
             background: rgba(15, 23, 42, 0.45);
             backdrop-filter: blur(15px);
             border: 2px solid rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 24px;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             color: white;
             box-sizing: border-box;
+            text-align: center;
         }
-        #fhy-banner {
+        #fhy-banner-login {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(10px);
             border: 2px solid #8b5cf6;
             box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
-            padding: 25px 20px;
+            padding: 20px;
             border-radius: 16px;
-            text-align: center;
             margin-bottom: 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
-        /* 🌐 ĐỒ HỌA CHUYỂN ĐỘNG LED RGB CHO LOGO ROBOT THẦY TẠO */
         .fhy-main-logo {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
             object-fit: cover;
             animation: logoGlow 4s ease-in-out infinite;
         }
-        #fhy-shimmer-title {
+        .shimmer-title {
             background: linear-gradient(to right, #f43f5e, #ec4899, #a855f7, #3b82f6, #06b6d4, #f43f5e);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: textShimmer 4s linear infinite;
-            font-size: 2.2em;
+            font-size: 2em;
             font-weight: 900;
             letter-spacing: 2px;
             margin: 0;
@@ -86,9 +89,9 @@
             background: rgba(20, 25, 45, 0.9);
             border: 2px solid #00f2fe;
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
-            padding: 25px;
+            padding: 20px;
             border-radius: 16px;
-            margin-bottom: 20px;
+            text-align: left;
         }
         .fhy-input {
             width: 100%;
@@ -121,142 +124,156 @@
             transform: scale(1.02);
             box-shadow: 0 0 25px rgba(236, 72, 153, 0.7);
         }
-        #chat-area {
-            background: rgba(15, 23, 42, 0.85);
-            border: 2px solid #ff0055;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
-            border-radius: 16px;
-            padding: 15px;
-        }
-        #msg-box {
-            height: 280px;
-            overflow-y: auto;
-            display: flex;
+
+        .chat-full-screen {
+            display: none;
+            width: 100%;
+            height: 100vh;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 15px;
-            padding-right: 5px;
+            box-sizing: border-box;
+            background: rgba(10, 12, 22, 0.6);
+            backdrop-filter: blur(20px);
         }
-        .bubble {
-            padding: 12px 16px;
-            border-radius: 16px;
-            max-width: 80%;
-            font-size: 0.98em;
-            white-space: pre-wrap;
-            line-height: 1.4;
+        .chat-header {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 2px solid #8b5cf6;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-        .user-bubble {
-            align-self: flex-end;
-            background: linear-gradient(135deg, #8b5cf6, #6366f1);
-            color: white;
-            border-radius: 16px 16px 0 16px;
-            box-shadow: 0 4px 10px rgba(99,102,241,0.3);
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .bot-bubble {
-            align-self: flex-start;
-            background: #1e293b;
-            color: #e2e8f0;
-            border: 1px solid #334155;
-            border-radius: 16px 16px 16px 0;
+        .fhy-mini-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #00f2fe;
+            animation: logoGlow 4s ease-in-out infinite;
+        }
+        #welcome-txt {
+            color: #00f2fe;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-shadow: 0 0 8px #00f2fe;
         }
         .mode-select {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
         }
         .mode-btn {
-            flex: 1;
             background: #1e293b;
             border: 2px solid #7928ca;
-            padding: 10px;
+            padding: 10px 20px;
             border-radius: 10px;
             color: white;
             cursor: pointer;
             font-weight: bold;
             font-size: 0.9em;
+            transition: 0.3s;
         }
         .mode-active {
             background: #7928ca;
             border-color: #00f2fe;
-            box-shadow: 0 0 10px #7928ca;
+            box-shadow: 0 0 15px #7928ca;
+        }
+        
+        #msg-box {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        .bubble {
+            padding: 14px 20px;
+            border-radius: 18px;
+            max-width: 65%;
+            font-size: 1.05em;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .user-bubble {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            border-radius: 18px 18px 0 18px;
+            box-shadow: 0 0 20px rgba(99,102,241,0.4);
+        }
+        .bot-bubble {
+            align-self: flex-start;
+            background: rgba(30, 41, 59, 0.9);
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            border-radius: 18px 18px 18px 0;
+        }
+        
+        .chat-input-area {
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 2px solid #ff0055;
+            padding: 20px 30px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 -4px 25px rgba(0,0,0,0.5);
+        }
+        .chat-input-container {
+            flex: 1;
+            position: relative;
         }
     </style>
 </head>
 <body>
 
-<div class="fhy-wrapper">
-    <div id="fhy-banner">
-        <!-- 🌐 LOGO ROBOT CYBERPUNK DO THẦY TẠO RIÊNG CHO CEO TIẾN ĐẠT -->
-        <img class="fhy-main-logo" src="https://imgbox.com" alt="FHY AI Logo">
-        
-        <h1 id="fhy-shimmer-title">🌈 FHY AI PLATFORM v16.4 🌈</h1>
-        <p style="color: #67e8f9; margin: 0; font-size: 1em; font-weight: bold;">Kỷ Nguyên Đồ Họa Động LED RGB Matrix</p>
-    </div>
-
-    <!-- CỔNG ĐĂNG NHẬP -->
-    <div id="login-box" class="input-group">
-        <h3 style="color: #00f2fe; text-align:center; margin: 0 0 20px 0; text-shadow: 0 0 10px #00f2fe;">🔐 CỔNG XÁC THỰC LIÊN KẾT SSO</h3>
-        <label style="font-weight: bold;">Nhập Email của em để liên kết:</label>
-        <input type="text" id="username" class="fhy-input" value="tiendat@gmail.com">
-        
-        <button class="fhy-btn" style="background: linear-gradient(135deg, #ea4335, #c5221f); margin-top: 25px; box-shadow: 0 0 15px rgba(234,67,53,0.4);" onclick="checkLogin('Google')">🔴 Đăng nhập bằng Google</button>
-        <button class="fhy-btn" style="background: linear-gradient(135deg, #ffffff, #cbd5e1); color: #1e293b; box-shadow: 0 0 15px rgba(255,255,255,0.3);" onclick="checkLogin('Apple')">⚪ Đăng nhập bằng Apple</button>
-    </div>
-
-    <!-- KHUNG CHATBOX -->
-    <div id="app-box" class="input-group" style="display: none;">
-        <div id="welcome-txt" style="color: #00f2fe; font-weight:bold; text-align:center; margin-bottom:15px; text-shadow: 0 0 8px #00f2fe;"></div>
-        
-        <div class="mode-select">
-            <button id="btn-chat" class="mode-btn mode-active" onclick="setMode('chat')">💬 Trò chuyện</button>
-            <button id="btn-math" class="mode-btn" onclick="setMode('math')">🧮 Giải toán</button>
+    <!-- 🔐 MÀN HÌNH 1: CỔNG ĐĂNG NHẬP -->
+    <div id="login-screen" class="login-wrapper">
+        <div id="fhy-banner-login">
+            <img class="fhy-main-logo" src="https://imgbox.com" alt="FHY AI Logo">
+            <h1 class="shimmer-title">🌈 FHY AI SYSTEM v17.0 🌈</h1>
+            <p style="color: #67e8f9; margin: 0; font-size: 0.95em; font-weight: bold;">Mạng Nơ-ron Ứng Biến Đa Tầng Cao Cấp</p>
         </div>
 
-        <div id="chat-area">
-            <div id="msg-box"></div>
-            <div style="display:flex; gap:10px;">
-                <input type="text" id="user-msg" class="fhy-input" style="margin-top:0;" placeholder="Nhập câu hỏi hoặc phép toán...">
-                <button class="fhy-btn" style="margin-top:0; width:90px; padding:10px;" onclick="sendChat()">Gửi</button>
+        <div class="input-group">
+            <h3 style="color: #00f2fe; text-align:center; margin: 0 0 15px 0; text-shadow: 0 0 10px #00f2fe;">🔐 CỔNG XÁC THỰC LIÊN KẾT SSO</h3>
+            <label style="font-weight: bold;">Nhập Email của em để liên kết:</label>
+            <input type="text" id="username" class="fhy-input" value="tiendat@gmail.com">
+            
+            <button class="fhy-btn" style="background: linear-gradient(135deg, #ea4335, #c5221f); margin-top: 20px; box-shadow: 0 0 15px rgba(234,67,53,0.4);" onclick="checkLogin('Google')">🔴 Đăng nhập bằng Google</button>
+            <button class="fhy-btn" style="background: linear-gradient(135deg, #ffffff, #cbd5e1); color: #1e293b; box-shadow: 0 0 15px rgba(255,255,255,0.3);" onclick="checkLogin('Apple')">⚪ Đăng nhập bằng Apple</button>
+        </div>
+    </div>
+
+    <!-- 💬 MÀN HÌNH 2: KHUNG CHATBOX FULL TOÀN MÀN HÌNH -->
+    <div id="chat-screen" class="chat-full-screen">
+        <div class="chat-header">
+            <div class="header-left">
+                <img class="fhy-mini-logo" src="https://imgbox.com" alt="FHY AI Logo">
+                <div id="welcome-txt"></div>
+            </div>
+            <div class="mode-select">
+                <button id="btn-chat" class="mode-btn mode-active" onclick="setMode('chat')">💬 Trò chuyện</button>
+                <button id="btn-math" class="mode-btn" onclick="setMode('math')">🧮 Giải toán</button>
             </div>
         </div>
+
+        <div id="msg-box"></div>
+
+        <div class="chat-input-area">
+            <div class="chat-input-container">
+                <input type="text" id="user-msg" class="fhy-input" style="margin-top:0; padding: 16px;" placeholder="Hãy thử trò chuyện tự do hoặc gõ phép toán khó xem nào...">
+            </div>
+            <button class="fhy-btn" style="margin-top:0; width:110px; padding:16px;" onclick="sendChat()">GỬI ĐI 🚀</button>
+        </div>
     </div>
-</div>
 
 <script>
     let currentMode = 'chat';
 
     function setMode(mode) {
         currentMode = mode;
-        document.getElementById('btn-chat').classList.toggle('mode-active', mode === 'chat');
-        document.getElementById('btn-math').classList.toggle('mode-active', mode === 'math');
-    }
-
-    function checkLogin(platform) {
-        const email = document.getElementById('username').value.trim();
-        if(!email) { alert('⚠️ Vui lòng điền Email liên kết!'); return; }
-        
-        document.getElementById('login-box').style.display = 'none';
-        document.getElementById('app-box').style.display = 'block';
-        document.getElementById('welcome-txt').innerHTML = `⚡ [OAuth 2.0 ${platform}] KẾT NỐI THÀNH CÔNG!<br>Chào mừng siêu hội viên: ${email.toUpperCase()} ⚡`;
-        
-        appendBubble(`FHY AI chào mừng bạn! Kết nối qua cổng bảo mật ${platform} hoàn tất. Hôm nay bạn cần giải toán hay tâm sự nào?`, 'bot');
-    }
-
-    function sendChat() {
-        const inputEl = document.getElementById('user-msg');
-        const text = inputEl.value.trim();
-        if (!text) return;
-
-        appendBubble(text, 'user');
-        inputEl.value = '';
-
-        setTimeout(() => {
-            let response = "";
-            let t = text.toLowerCase();
-
-            if (currentMode === 'math') {
-                if (t.includes("hinh tron") || t.includes("hình tròn")) {
-                    let r = 5;
-                    let match = t.match(/(\\d+(?:\\.\\d+)?)/);
-                    if (match) r = parseFloat(match);
-                    let dt = Math.PI * r * r;
